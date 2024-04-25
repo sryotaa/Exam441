@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import tool.Action;
 
 public class MenuAction extends Action{
+	//うんちいいいいいいいいいい
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
