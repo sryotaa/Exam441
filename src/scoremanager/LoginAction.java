@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import tool.Action;
 
 public class LoginAction extends Action{
-
+// aaaa
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
