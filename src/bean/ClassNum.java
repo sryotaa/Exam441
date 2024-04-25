@@ -3,7 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class ClassNum implements Serializable {
-
+//	aaaaa
 	/**
 	 * 学校:School
 	 */
