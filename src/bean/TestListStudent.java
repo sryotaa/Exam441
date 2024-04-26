@@ -5,22 +5,22 @@ import java.io.Serializable;
 public class TestListStudent implements Serializable {
 
 	/**
-	 * 入学年度:int
+	 * 科目名:String
 	 */
 	private String subjectName;
 
 	/**
-	 * クラス番号:String
+	 * 科目コード:String
 	 */
 	private String subjectCd;
 
 	/**
-	 * 学生番号:String
+	 * 回数:int
 	 */
 	private int num;
 
 	/**
-	 * 氏名:String
+	 * 点数:int
 	 */
 	private int point;
 
