@@ -12,6 +12,9 @@
 	<h2>科目管理</h2>
 	<a href="SubjectCreate.action">新規登録</a>
 
+	<form method="get">
+	</form>
+
 
 	<c:choose>
 
@@ -22,9 +25,9 @@
 					<th></th>
 					<th></th>
 				</tr>
-				<c:forEach var="subject" items="${students}">
+				<c:forEach var="subject" items="${subjects}">
 					<tr>
-						<td>${subject.no}</td>
+						<td>${subject.cd}</td>
 						<td>${subject.name}</td>
 						<td class="text-center">
 
