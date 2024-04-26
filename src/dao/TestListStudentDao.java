@@ -15,7 +15,8 @@ public class TestListStudentDao extends Dao {
 	/**
 	 * baseSql:String 共通SQL文 プライベート
 	 */
-	private String baseSql = "select * from test where school_cd=? ";
+
+	private String baseSql = "select subject.name, test.subject_cd, test.no, test.point from test left join subject on test.school_cd = subject.school_cd and test.student_no=?";
 
 
 	private List<TestListStudent> postFilter(ResultSet rSet) throws Exception {
@@ -41,6 +42,17 @@ public class TestListStudentDao extends Dao {
 		return list;
 	}
 
+
+
+
+	/**
+	 * filterメソッド 学生番号を指定し、学生別成績一覧を取得する
+	 *
+	 * @param student:Student
+	 *            学生番号
+	 * @throws Exception
+	 */
+
 	public List<TestListStudent> filter(Student student)throws Exception {
 
 		// リストを初期化
@@ -51,15 +63,15 @@ public class TestListStudentDao extends Dao {
 		PreparedStatement statement = null;
 		// リザルトセット
 		ResultSet rSet = null;
-		// SQL文の条件
-		String condition = "and ent_year=? and class_num=? and subjectName=? ";
-		// SQL文のソート
-		String order = "order by no asc";
 
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement(baseSql + condition + order);
+			statement = connection.prepareStatement(baseSql);
+
+			// プリペアードステートメントに学校コードをバインド
+			statement.setString(1, student.getNo());		//訂正必要
+
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
 
