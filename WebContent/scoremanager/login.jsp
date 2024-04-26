@@ -24,7 +24,7 @@
 	<!-- ＩＤ -->
 	<label>ＩＤ</label>
 	<input type="text" name="id" maxlength="20" placeholder="20文字以内の半角英数字でご入力下さい"
-	 autocomplete="off" style="ime-mode: disabled" value="admin" required/>
+	 autocomplete="off" style="ime-mode: disabled" value="admin1" required/>
 
 	<!-- パスワード -->
 	<label>パスワード</label>
@@ -32,7 +32,7 @@
 
 	<!-- 名前 -->
 	<label>名前</label>
-	<input type="text" name="namae" value="大原 一">
+	<input type="text" name="namae" value="先生1">
 
 	<!-- 学校コード -->
 	<label>学校コード</label>

@@ -27,10 +27,14 @@ public class SubjectListAction extends Action{
 				String cdStr ="";//科目コード
 				List<Subject> subjects = null;// 学生リスト
 				LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得
-				int year = todaysDate.getYear();// 現在の年を取得
 				SubjectDao sDao = new SubjectDao();//学生Dao
 				ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
 				Map<String, String> errors = new HashMap<>();// エラーメッセージ
+
+
+				//DBからデータ取得 3
+				// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+				List<String> list = cNumDao.filter(teacher.getSchool());
 
 				//リクエストパラメータ―の取得 2
 				nameStr = req.getParameter("f1");
@@ -38,9 +42,6 @@ public class SubjectListAction extends Action{
 				subjects = sDao.filter(teacher.getSchool());
 
 
-				//DBからデータ取得 3
-				// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
-				List<String> list = cNumDao.filter(teacher.getSchool());
 
 
 				// リクエストに学生リストをセット

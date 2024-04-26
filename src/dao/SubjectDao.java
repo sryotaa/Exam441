@@ -256,7 +256,7 @@ public class SubjectDao extends Dao{
 
 				statement = connection
 
-						.prepareStatement("update subject set name=?, school=?,cd=?,where no=?");
+						.prepareStatement("update subject set name=?, school=?,cd=?,where cd=?");
 
 				//プリペアードステートメントに値をバインド
 
