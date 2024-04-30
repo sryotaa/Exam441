@@ -20,7 +20,7 @@ public class TestDao extends Dao{
 	 * baseSql:String 共通SQL文 プライベート
 	 */
 //	private String baseSql = "select * from test where school_cd=? ";
-	private String baseSql = "select student_no, ent_year, subject_cd, test.no, test.class_num, test.point from test inner join student on test.student_no = student.no ";
+	private String baseSql = "select student.no, ent_year, test.subject_cd, student.name, test.no, student.class_num, test.point from student left outer join test on test.student_no = student.no ";
 
 	/**
 	 * getメソッド
