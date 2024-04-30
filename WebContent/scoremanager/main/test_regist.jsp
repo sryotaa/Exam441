@@ -34,58 +34,44 @@
 		<label>科目</label>
 		<select name="f3">
 			<option value="0">--------</option>
-			<c:forEach var="num" items="${subject_set}">
+			<c:forEach var="subject" items="${subject_set}">
 				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-				<option value="${num}" required <c:if test="${num==f3}">selected</c:if>>${num}</option>
+				<option value="${subject.name}" required <c:if test="${subject.name==f3}">selected</c:if>>${subject.name}</option>
 			</c:forEach>
 		</select>
 
 		<label>回数</label>
 		<select name="f4">
 			<option value="0">--------</option>
-			<c:forEach var="num" items="${num_set}">
-				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-				<option value="${num}" required <c:if test="${num==f4}">selected</c:if>>${num}</option>
-			</c:forEach>
+			<option value="1">1</option>
+			<option value="2">2</option>
 		</select>
 
 		<button>検索</button>
-<!--
+
 		<div>${errors.get("f1")}</div>
 	</form>
 
 	<c:choose>
-		<c:when test="${students.size()>0}">
-			<div>検索結果：${students.size()}件</div>
+		<c:when test="${test.size()>0}">
+			<div>検索結果：${test.size()}件</div>
 
 			<table class="table table-hover">
 				<tr>
 					<th>入学年度</th>
+					<th>クラス</th>
 					<th>学生番号</th>
 					<th>氏名</th>
-					<th>クラス</th>
-					<th class="text-center">在学中</th>
-					<th></th>
+					<th>得点</th>
 					<th></th>
 				</tr>
-				<c:forEach var="student" items="${students}">
+				<c:forEach var="test" items="${test}">
 					<tr>
-						<td>${student.entYear}</td>
-						<td>${student.no}</td>
-						<td>${student.name}</td>
-						<td>${student.classNum}</td>
-						<td class="text-center">
-							<%-- 在学フラグがたっている場合「○」それ以外は「×」を表示 --%>
-							<c:choose>
-								<c:when test="${student.isAttend()}">
-									○
-								</c:when>
-								<c:otherwise>
-									×
-								</c:otherwise>
-							</c:choose>
-						</td>
-						<td><a href="StudentUpdate.action?no=${student.no}">変更</a></td>
+						<td>${test.student.entYear}</td>
+						<td>${test.classNum}</td>
+						<td>${test.student.no}</td>
+						<td>${test.student.name}</td>
+						<td>${test.point}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -93,7 +79,7 @@
 		<c:otherwise>
 			<div>情報が存在しませんでした</div>
 		</c:otherwise>
-	</c:choose> -->
+	</c:choose>
 
 </body>
 </html>
