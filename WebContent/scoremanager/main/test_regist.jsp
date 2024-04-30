@@ -54,7 +54,7 @@
 
 	<c:choose>
 		<c:when test="${test.size()>0}">
-			<div>検索結果：${test.size()}件</div>
+			<div>科目：${subject.name}</div>
 
 			<table class="table table-hover">
 				<tr>
