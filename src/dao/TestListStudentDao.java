@@ -70,7 +70,7 @@ public class TestListStudentDao extends Dao {
 			statement = connection.prepareStatement(baseSql);
 
 			// プリペアードステートメントに学校コードをバインド
-			statement.setString(1, student.getNo());		//訂正必要
+			statement.setString(1, student.getNo());
 
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();

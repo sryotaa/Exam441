@@ -1,11 +1,14 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Student;
+import bean.School;
+import bean.Subject;
 import bean.TestListSubject;
 
 public class TestListSubjectDao {
@@ -14,7 +17,7 @@ public class TestListSubjectDao {
 	 * baseSql:String 共通SQL文 プライベート
 	 */
 
-	private String baseSql = "";
+	private String baseSql = "select entyear, class_num, student_no, student_name, ";
 
 	private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
 		// リストを初期化
@@ -54,9 +57,56 @@ public class TestListSubjectDao {
 	 */
 
 
-	public List<Student> filter(int entYear, String classNum, Map<> points) throws Exception {
+	public List<TestListSubject> filter(int entYear, String classNum, Subject subject, School school) throws Exception {
+
+		// リストを初期化
+		List<TestListSubject> list = new ArrayList<>();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リザルトセット
+		ResultSet rSet = null;
+
+		// SQL文の条件
+		String condition = "and ent_year=? and class_num=? ";
+		// SQL文のソート
+		String order = "order by no asc";
 
 
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement(baseSql);
+
+			// プリペアードステートメントに科目コード？をバインド
+			statement.setString(1, subject.getCd());		//訂正必要
+
+			// プライベートステートメントを実行
+			rSet = statement.executeQuery();
+
+			// リストへの格納処理を実行
+			list = postFilter(rSet);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		return list;
 	}
 
 }
