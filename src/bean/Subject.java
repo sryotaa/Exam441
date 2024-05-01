@@ -6,22 +6,25 @@ public class Subject implements Serializable{
 
 
 	//科目コード
-	private String no;
+	private String cd;
 
 	//科目名
 	private String name;
 
+	//school
 
-
+	private School school;
 
 	//ゲッタ、セッタ
 
-	public String getNo() {
-		return no;
+
+
+	public String getCd() {
+		return cd;
 	}
 
-	public void setNo(String no) {
-		this.no = no;
+	public void setCd(String cd) {
+		this.cd = cd;
 	}
 
 	public String getName() {
@@ -31,6 +34,22 @@ public class Subject implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+
+
+
+
+
+
+
 
 
 
