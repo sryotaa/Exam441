@@ -30,13 +30,13 @@ public class TestRegistAction extends Action {
 
 		String entYearStr="";// 入力された入学年度
 		String classNum = "";//入力されたクラス番号
-		String subjectStr="";// 入力された科目
+		String subjectStr="";// 入力された科目コード
 		String numStr="";// 入力された回数
 		String pointStr="";// 入力された得点
 		int num = 0;//回数
-		int point = 0;//得点
+//		int point = 0;//得点
 		int entYear = 0;// 入学年度
-		List<Test> test = null;// 学生リスト
+		List<Test> tests = null;// 学生リスト
 		LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得
 		int year = todaysDate.getYear();// 現在の年を取得
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
@@ -71,6 +71,7 @@ public class TestRegistAction extends Action {
 			// 数値に変換
 			num = Integer.parseInt(numStr);
 		}
+		System.out.println(subjectStr);
 
 //		System.out.println("2-3");
 //		if (pointStr != null) {
@@ -78,13 +79,16 @@ public class TestRegistAction extends Action {
 //			point = Integer.parseInt(pointStr);
 //		}
 
+		subject.setCd(subjectStr);
+
 		System.out.println("2-4");
-		if (entYear != 0 && !classNum.equals("0") && num != 0) {
+		if (entYear != 0 && !classNum.equals("0") && !subject.equals("0")&& num != 0) {
 			// 入学年度、クラス番号、回数を指定
 			System.out.println("3");
-			test = tDao.filter(entYear, classNum, subject , num, teacher.getSchool());
+			tests = tDao.filter(entYear, classNum, subject , num, teacher.getSchool());
 			System.out.println("4");
 		} else {
+			System.out.println("2-5");
 			errors.put("f1", "指定してください");
 			req.setAttribute("errors", errors);
 		}
@@ -113,8 +117,8 @@ public class TestRegistAction extends Action {
 		// リクエストに科目をセット
 		req.setAttribute("f3", slist);
 
-		// リクエストに学生リストをセット
-		req.setAttribute("test", test);
+		// リクエストにテストリストをセット
+		req.setAttribute("tests", tests);
 		// リクエストにデータをセット
 		req.setAttribute("class_num_set", clist);
 		req.setAttribute("ent_year_set", entYearSet);

@@ -20,7 +20,7 @@ public class TestDao extends Dao{
 	 * baseSql:String 共通SQL文 プライベート
 	 */
 //	private String baseSql = "select * from test where school_cd=? ";
-	private String baseSql = "select student.no, ent_year, test.subject_cd, student.name, test.no, student.class_num, test.point from student left outer join test on test.student_no = student.no ";
+	private String baseSql = "select student.no, ent_year, test.subject_cd, student.name, test.no, student.class_num, test.point from student left outer join test on student.no = test.student_no ";
 
 	/**
 	 * getメソッド
@@ -52,14 +52,14 @@ public class TestDao extends Dao{
 			// 学生Daoを初期化
 			StudentDao studentDao = new StudentDao();
 			// 科目Daoを初期化
-//			SubjectDao subjectDao = new SubjectDao();
+			SubjectDao subjectDao = new SubjectDao();
 
 			if ( rSet.next()) {
 				// リザルトセットが存在する場合
 				// テストインスタンスに検索結果をセット
 				test.setStudent(studentDao.get(rSet.getString("student")));
 				test.setClassNum(rSet.getString("class_num"));
-//				test.setSubject(SubjectDao.get(rSet.getString("subject")));
+//				test.setSubject(subjectDao.get(rSet.getString("subject")));
 				test.setSchool(schoolDao.get(rSet.getString("school_cd")));
 				test.setPoint(rSet.getInt("point"));
 				test.setNo(rSet.getInt("no"));
@@ -106,17 +106,19 @@ public class TestDao extends Dao{
 		// リストを初期化
 		List<Test> list = new ArrayList<>();
 		try {
+//			StudentDao studentDao = new StudentDao();
+
 			// リザルトセットを全件走査
 			while(rSet.next()) {
-				// 学生インスタンスを初期化
+				// テストインスタンスを初期化
 				Test test = new Test();
-				// 学生インスタンスに検索結果をセット
+				// テストインスタンスに検索結果をセット
 //				test.setStudent(rSet.get(""));
 				test.setClassNum(rSet.getString("class_num"));
-//				test.setSubject(rSet.getInt("subject"));
+//				test.setSubject(rSet.getSubject("subject"));
 				test.setNo(rSet.getInt("no"));
 				test.setPoint(rSet.getInt("point"));
-//				test.setStudent(student);
+//				test.setStudent(studentDao.get(rSet.getString("student")));
 //				test.setSubject(subject);
 				test.setSchool(school);
 				//リストに追加
@@ -161,31 +163,34 @@ public class TestDao extends Dao{
 		ResultSet rSet = null;
 		System.out.println("5");
 		// SQL文の条件
-		String condition = "and ent_year=? and class_num=? and subject_cd=? and num=? ";
+		String condition = "where student.school_cd=? and ent_year=? and student.class_num=?";
 
-		String join = "";
 		// SQL文のソート
 		String order = "order by no asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			System.out.println("ここでエラー！！！！！！！ → SQL文にstudentテーブルを結合する必要がある");
-			statement = connection.prepareStatement(baseSql);
+			statement = connection.prepareStatement(baseSql + condition + order);
 //			System.out.println("6-3");
 //			// プリペアードステートメントに学校コードをバインド
-//			statement.setString(1, school.getCd());
+			statement.setString(1, school.getCd());
+			System.out.println(school.getCd());
 //			System.out.println("6-4");
 //			// プリペアードステートメントに入学年度をバインド
-//			statement.setInt(2, entYear);
+			statement.setInt(2, entYear);
+			System.out.println(entYear);
 //			System.out.println("6-5");
 //			// プリペアードステートメントにクラス番号をバインド
-//			statement.setString(3, classNum);
+			statement.setString(3, classNum);
+			System.out.println(classNum);
 //			System.out.println("6-6");
 //			// プリペアードステートメントに科目をバインド
 //			System.out.println("6-1");
 //			statement.setString(4, subject.getCd());
-//			System.out.println("6-2");
-//			statement.setInt(5, num);
+			System.out.println(subject.getCd());
+//			statement.setInt(4, num);
+			System.out.println(num);
+
 //			System.out.println("6-7");
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();

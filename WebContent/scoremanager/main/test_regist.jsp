@@ -36,7 +36,7 @@
 			<option value="0">--------</option>
 			<c:forEach var="subject" items="${subject_set}">
 				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-				<option value="${subject.name}" required <c:if test="${subject.name==f3}">selected</c:if>>${subject.name}</option>
+				<option value="${subject.cd}" required <c:if test="${subject.cd==f3}">selected</c:if>>${subject.name}</option>
 			</c:forEach>
 		</select>
 
@@ -53,8 +53,8 @@
 	</form>
 
 	<c:choose>
-		<c:when test="${test.size()>0}">
-			<div>科目：${subject.name}</div>
+		<c:when test="${tests.size()>0}">
+			<div>科目：${test.subject.name}</div>
 
 			<table class="table table-hover">
 				<tr>
@@ -65,9 +65,9 @@
 					<th>得点</th>
 					<th></th>
 				</tr>
-				<c:forEach var="test" items="${test}">
+				<c:forEach var="test" items="${tests}">
 					<tr>
-						<td>${test.student.entYear}</td>
+						<td>${test.student.ent_year}</td>
 						<td>${test.classNum}</td>
 						<td>${test.student.no}</td>
 						<td>${test.student.name}</td>
