@@ -1,11 +1,14 @@
 package scoremanager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.School;
 import bean.Teacher;
+import dao.TeacherDao;
 import tool.Action;
 
 public class LoginExecuteAction extends Action{
@@ -16,45 +19,51 @@ public class LoginExecuteAction extends Action{
 		String url = "";
 
 		Teacher teacher = new Teacher();
-		School school = new School();
+		TeacherDao teacherDAO = new TeacherDao();
+		Map<String, String> errors = new HashMap<>();//エラーメッセージ
 
 		//リクエストパラメータ―の取得 2
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
-		String name = req.getParameter("namae");
-		String school_cd = req.getParameter("school_cd");
 
 		//DBからデータ取得 3
-		//なし
+		//☆教員IDから教員インスタンスを取得
+		teacher = teacherDAO.get(id);
+
 		//ビジネスロジック 4
+		//☆
+		if (teacher != null) {
+			//認証成功
 
-		teacher.setId(id);
-		teacher.setPassword(password);
-		teacher.setName(name);
+			//Sessionを有効にする
+			HttpSession session = req.getSession(true);
+			// 認証済みフラグを立てる
+			teacher.setAuthenticated(true);
+			//セッションに"user"という変数名で値はTeacher変数の中身
+			session.setAttribute("user", teacher);
 
-		school.setCd(school_cd);
-		school.setName("大宮校");
+			//リダイレクト
+			url = "main/Menu.action";
+			res.sendRedirect(url);
+		} else {
+			//認証失敗
+			errors.put("id", "IDまたはパスワードが確認出来ませんでした。");
 
-		teacher.setSchool(school);//School型
-
-		// 認証済みフラグを立てる
-		teacher.setAuthenticated(true);
-
-		//Sessionを有効にする
-		HttpSession session = req.getSession(true);
-		//セッションに"user"という変数名で値はTeacher変数の中身
-		session.setAttribute("user", teacher);
-
-		//DBへデータ保存 5
-		//なし
-		//レスポンス値をセット 6
-		//なし
-		//JSPへフォワード 7
+			//JSPへフォワード
+			url = "login.jsp";
+			req.getRequestDispatcher(url).forward(req, res);
+		}
 		//req.getRequestDispatcher("main/Menu.action").forward(req, res);
 
-		//リダイレクト
-		url = "main/Menu.action";
-		res.sendRedirect(url);
 	}
 
 }
+
+
+
+/*
+ * List<String> errors = new ArrayList<>();
+		errors.add("IDまたはパスワードが確認出来ませんでした。");
+		req.setAttribute("errors", errors);
+		req.setAttribute("id", id);
+*/
