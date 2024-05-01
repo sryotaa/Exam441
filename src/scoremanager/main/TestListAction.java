@@ -27,9 +27,9 @@ public class TestListAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");//ログインユーザー
 		Test student = (Test)session.getAttribute("no");
 
-		String entYearStr="";// 入力された入学年度
-		String classNum = "";//入力されたクラス番号
-		String subjectName="";//入力された科目名
+//		String entYearStr="";// 入力された入学年度
+//		String classNum = "";//入力されたクラス番号
+//		String subjectName="";//入力された科目名
 		String studentNoStr="";// 入力された学生番号
 		int studentNo=0;
 		List<Student> students = null;// 学生リスト
@@ -42,9 +42,9 @@ public class TestListAction extends Action {
 
 
 		//リクエストパラメータ―の取得 2
-		entYearStr = req.getParameter("f1");
-		classNum = req.getParameter("f2");
-		subjectName = req.getParameter("f3");
+//		entYearStr = req.getParameter("f1");
+//		classNum = req.getParameter("f2");
+//		subjectName = req.getParameter("f3");
 		studentNoStr = req.getParameter("f4");
 
 		//DBからデータ取得 3
@@ -57,12 +57,12 @@ public class TestListAction extends Action {
 			studentNo = Integer.parseInt(studentNoStr);
 		}
 
-		if (entYear != 0 && !classNum.equals("0")) {
-			// 入学年度とクラス番号を指定
-			students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+//		if (entYear != 0 && !classNum.equals("0")) {
+//			// 入学年度とクラス番号を指定
+//			students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
 
 
-//		ぐちゃぐちゃになっとる
+
 
 		if (studentNo != 0) {
 			// 学生番号を指定
@@ -75,6 +75,9 @@ public class TestListAction extends Action {
 		//レスポンス値をセット 6
 		// リクエストに学生番号をセット
 		req.setAttribute("f4", studentNo);
+		// リクエストに学生リストをセット
+		req.setAttribute("testliststudents", tlsstudents);
+
 
 
 		//JSPへフォワード 7
