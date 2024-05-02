@@ -28,7 +28,7 @@ public class LoginExecuteAction extends Action{
 
 		//DBからデータ取得 3
 		//☆教員IDから教員インスタンスを取得
-		teacher = teacherDAO.get(id);
+		teacher = teacherDAO.login(id, password);
 
 		//ビジネスロジック 4
 		//☆
