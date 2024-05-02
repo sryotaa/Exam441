@@ -11,6 +11,13 @@
 <form action = "LoginExecute.action" method="post">
 <h2>ログイン</h2>
 
+
+<!-- エラー -->
+<c:forEach var="error" items="${errors}">
+	<li>${errors}</li>
+</c:forEach>
+
+
 <!--
 	autocomplete
 	on/off:自動補完の制御
