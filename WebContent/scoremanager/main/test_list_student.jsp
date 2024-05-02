@@ -13,13 +13,19 @@
 	<form method="get">
 
 		<label>学生番号</label>
-		<select name="f1">
-			<option value="0">--------</option>
+
+		<!--  	<select name="f4">
+		<option value="0">--------</option>
 			<c:forEach var="no" items="${studentNo}">
 				<%-- 現在のnoと選択されていたf1が一致していた場合selectedを追記 --%>
-				<option value="${no}" <c:if test="${no==f1}">selected</c:if>>${no}</option>
+				<option value="${no}" <c:if test="${no==f4}">selected</c:if>>${no}</option>
 			</c:forEach>
-		</select>
+
+					</select>
+
+			-->
+				<input type="text" name="f4">
+
 
 		<button>検索</button>
 
@@ -37,7 +43,7 @@
 					<th>回数</th>
 					<th>点数</th>
 				</tr>
-				<c:forEach var="testliststudent" items="${tlsstudents}">
+				<c:forEach var="testliststudents" items="${tlsstudents}">
 					<tr>
 						<td>${testliststudent.subjectName}</td>
 						<td>${testliststudent.subjectId}</td>
