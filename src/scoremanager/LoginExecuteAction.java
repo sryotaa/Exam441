@@ -27,7 +27,7 @@ public class LoginExecuteAction extends Action{
 		String password = req.getParameter("password");
 
 		//DBからデータ取得 3
-		//☆教員IDから教員インスタンスを取得
+		//☆教員IDとパスワードから教員インスタンスを取得
 		teacher = teacherDAO.login(id, password);
 
 		//ビジネスロジック 4
@@ -48,6 +48,7 @@ public class LoginExecuteAction extends Action{
 		} else {
 			//認証失敗
 			errors.put("id", "IDまたはパスワードが確認出来ませんでした。");
+			System.out.println("1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 			//JSPへフォワード
 			url = "login.jsp";
