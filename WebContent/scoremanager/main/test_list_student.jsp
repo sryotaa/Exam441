@@ -24,7 +24,7 @@
 					</select>
 
 			-->
-				<input type="text" name="studentNo">
+				<input type="text" name="f4">
 
 
 		<button>検索</button>
