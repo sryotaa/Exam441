@@ -24,40 +24,23 @@
 
 	<!-- ＩＤ -->
 	<label>ＩＤ</label>
-<<<<<<< HEAD
-	<input type="text" name="id" maxlength="20" placeholder="半角でご入力ください"
+	<input type="text" name="id" maxlength="20" placeholder="半角でご入力下さい"
 	 autocomplete="off" style="ime-mode: disabled" value="admin" required/>
 	 <br>
-=======
-	<input type="text" name="id" maxlength="20" placeholder="20文字以内の半角英数字でご入力下さい"
-	 autocomplete="off" style="ime-mode: disabled" value="admin1" required/>
->>>>>>> branch 'master' of https://github.com/sryotaa/Exam441.git
 
-	<!-- パスワード -->
+	 	<!-- パスワード -->
 	<label>パスワード</label>
 	<input type="password" name="password" maxlength="20" placeholder="20文字以内の半角英数字でご入力ください"
 	autocomplete="off" style="ime-mode: disabled" value="password" required/>
 	<br>
 
-<<<<<<< HEAD
 	<input id="chk" type="checkbox" name="chk_d_ps">
 	<label>パスワードを表示</label>
 	<br>
-=======
-	<!-- 名前 -->
-	<label>名前</label>
-	<input type="text" name="namae" value="先生1">
-
-	<!-- 学校コード -->
-	<label>学校コード</label>
-	<input type="text" name="school_cd" value="knz">
->>>>>>> branch 'master' of https://github.com/sryotaa/Exam441.git
 
 	<!-- ログイン用ボタン -->
 	<input type="submit" name="login" value="ログイン"/>
 
 </form>
-
-
 </body>
 </html>
