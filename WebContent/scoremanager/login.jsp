@@ -12,7 +12,7 @@
 <h2>ログイン</h2>
 
 
-<!-- エラー -->
+<!-- ログインエラー -->
 <c:forEach var="error" items="${errors}">
 	<li>${errors}</li>
 </c:forEach>
