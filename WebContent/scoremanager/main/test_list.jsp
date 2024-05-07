@@ -44,21 +44,10 @@
 		<div>${errors.get("f1")}</div>
 	</form>
 
-	<form method="get">
-		<form method="get">
+	<form action = "TestListStudentExecute.action" method="post">
 
 		<label>学生番号</label>
 
-		<!--  	<select name="f4">
-		<option value="0">--------</option>
-			<c:forEach var="no" items="${studentNo}">
-				<%-- 現在のnoと選択されていたf1が一致していた場合selectedを追記 --%>
-				<option value="${no}" <c:if test="${no==f4}">selected</c:if>>${no}</option>
-			</c:forEach>
-
-					</select>
-
-			-->
 				<input type="text" name="studentNo">
 
 
@@ -67,7 +56,6 @@
 		<div>${errors.get("f1")}</div>
 	</form>
 
-	</form>
 
 
 

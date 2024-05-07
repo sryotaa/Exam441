@@ -1,5 +1,7 @@
+<%-- 学生一覧JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,17 +16,20 @@
 
 		<label>学生番号</label>
 
-		<!--  	<select name="f4">
+
+			<input type="text" name="f4">
+
+
+
+		<!--			  	<select name="f4">
 		<option value="0">--------</option>
 			<c:forEach var="no" items="${studentNo}">
-				<%-- 現在のnoと選択されていたf1が一致していた場合selectedを追記 --%>
+				<%-- 現在のnoと選択されていたf4が一致していた場合selectedを追記 --%>
 				<option value="${no}" <c:if test="${no==f4}">selected</c:if>>${no}</option>
 			</c:forEach>
 
 					</select>
-
-			-->
-				<input type="text" name="f4">
+				-->
 
 
 		<button>検索</button>
@@ -33,8 +38,8 @@
 	</form>
 
 	<c:choose>
-		<c:when test="${students.size()>0}">
-			<div>検索結果：${students.size()}件</div>
+		<c:when test="${tlsstudents.size()>0}">
+			<div>学生番号()</div>
 
 			<table class="table table-hover">
 				<tr>
@@ -43,7 +48,7 @@
 					<th>回数</th>
 					<th>点数</th>
 				</tr>
-				<c:forEach var="testliststudents" items="${tlsstudents}">
+				<c:forEach var="tlsstudents" items="${tlsstudents}">
 					<tr>
 						<td>${testliststudent.subjectName}</td>
 						<td>${testliststudent.subjectId}</td>

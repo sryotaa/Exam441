@@ -69,7 +69,7 @@ public class TestListStudentDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(baseSql);
 
-			// プリペアードステートメントに学校コードをバインド
+			// プリペアードステートメントに学生番号をバインド
 			statement.setString(1, student.getNo());
 
 			// プライベートステートメントを実行
