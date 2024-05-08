@@ -66,6 +66,9 @@ public class TestListAction extends Action {
 
 		//レスポンス値をセット 6
 
+
+
+
 		// リクエストに入学年度をセット
 		req.setAttribute("f1", entYear);
 		// リクエストにクラス番号をセット
@@ -75,7 +78,7 @@ public class TestListAction extends Action {
 
 
 
-
+//		System.out.print(classNum);
 
 		// リクエストにリストをセット
 		req.setAttribute("ent_year_set", entYearSet);

@@ -29,10 +29,11 @@ public class TestListStudentDao extends Dao {
 				// 学生インスタンスを初期化
 				TestListStudent testliststudent = new TestListStudent();
 				// 学生インスタンスに検索結果をセット
-				testliststudent.setSubjectName(rSet.getString("subjectName"));
-				testliststudent.setSubjectCd(rSet.getString("subjectId"));
-				testliststudent.setNum(rSet.getInt("num"));
-				testliststudent.setPoint(rSet.getInt("point"));
+				System.out.print("yuuyhhyuhuy");
+				testliststudent.setSubjectName(rSet.getString("NAME"));
+				testliststudent.setSubjectCd(rSet.getString("SUBJECT_CD"));
+				testliststudent.setNum(rSet.getInt("NO"));
+				testliststudent.setPoint(rSet.getInt("POINT"));
 				//リストに追加
 				list.add(testliststudent);
 			}
@@ -69,12 +70,13 @@ public class TestListStudentDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(baseSql);
 
+			System.out.print(student.getName());
 			// プリペアードステートメントに学生番号をバインド
 			statement.setString(1, student.getNo());
-
+			System.out.print(student.getName());
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
-
+			System.out.print(student.getName());
 			// リストへの格納処理を実行
 			list = postFilter(rSet);
 		} catch (Exception e) {

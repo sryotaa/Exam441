@@ -12,12 +12,12 @@
 
 	<h2>成績一覧（学生）</h2>
 
-	<form method="get">
+	<form action = "TestListStudentExecute.action" method="post">
 
 		<label>学生番号</label>
 
 
-			<input type="text" name="f4">
+			<input type="text" name="studentNo">
 
 
 
@@ -39,7 +39,7 @@
 
 	<c:choose>
 		<c:when test="${tlsstudents.size()>0}">
-			<div>学生番号()</div>
+			<div>${stu_name}</div>
 
 			<table class="table table-hover">
 				<tr>
@@ -48,10 +48,10 @@
 					<th>回数</th>
 					<th>点数</th>
 				</tr>
-				<c:forEach var="tlsstudents" items="${tlsstudents}">
+				<c:forEach var="testliststudent" items="${tlsstudents}">
 					<tr>
 						<td>${testliststudent.subjectName}</td>
-						<td>${testliststudent.subjectId}</td>
+						<td>${testliststudent.subjectCd}</td>
 						<td>${testliststudent.num}</td>
 						<td>${testliststudent.point}</td>
 

@@ -1,5 +1,7 @@
+<%-- 学生一覧JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +10,7 @@
 </head>
 <body>
 
-	<h2>成績参照</h2>
+	<h2>成績一覧（科目）</h2>
 
 	<form action = "TestListSubjectExecute.action" method="post">
 		<label>入学年度</label>
@@ -43,22 +45,36 @@
 
 		<div>${errors.get("f1")}</div>
 	</form>
+	<c:choose>
+		<c:when test="${tlssubjects.size()>0}">
 
-	<form action = "TestListStudentExecute.action" method="post">
+			<table class="table table-hover">
+				<tr>
+					<th>入学年度</th>
+					<th>クラス</th>
+					<th>学生番号</th>
+					<th>氏名</th>
+					<th>1回</th>
+					<th>2回</th>
 
-		<label>学生番号</label>
+				</tr>
+				<c:forEach var="testlistsubject" items="${tlssubjects}">
+					<tr>
+						<td>${testlistsubject.entYear}</td>
+						<td>${testlistsubject.classNum}</td>
+						<td>${testlistsubject.studentNo}</td>
+						<td>${testlistsubject.studentName}</td>
+						<td></td>
+						<td></td>
 
-				<input type="text" name="studentNo">
-
-
-		<button>検索</button>
-
-		<div>${errors.get("f1")}</div>
-	</form>
-
-
-
-
+					</tr>
+				</c:forEach>
+			</table>
+		</c:when>
+		<c:otherwise>
+			<div>学生情報が存在しませんでした</div>
+		</c:otherwise>
+	</c:choose>
 
 
 </body>
