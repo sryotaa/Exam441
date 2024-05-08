@@ -17,7 +17,6 @@
 	<li>${errors}</li>
 </c:forEach>
 
-
 <!--
 	autocomplete
 	on/off:自動補完の制御
