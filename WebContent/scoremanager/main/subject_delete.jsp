@@ -7,8 +7,9 @@
 <title>得点管理システム</title>
 </head>
 <body>
-
 	<h2>科目情報削除</h2>
+
+
 
 </body>
 </html>

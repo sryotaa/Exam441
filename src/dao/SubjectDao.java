@@ -256,15 +256,14 @@ public class SubjectDao extends Dao{
 
 				statement = connection
 
-						.prepareStatement("update subject set name=?, school=?,cd=?,where cd=?");
+						.prepareStatement("update subject set name=? where cd=?");
 
 				//プリペアードステートメントに値をバインド
 
-				statement.setString(1, subject.getSchool().getCd());
+
+				statement.setString(1,subject.getName());
 
 				statement.setString(2,subject.getCd());
-
-				statement.setString(3,subject.getName());
 
 			}
 
