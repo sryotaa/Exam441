@@ -36,7 +36,7 @@
 			<option value="0">--------</option>
 			<c:forEach var="sub" items="${subject_set}">
 				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-				<option value="${sub}" <c:if test="${sub==f3}">selected</c:if>>${sub}</option>
+				<option value="${sub.cd}" <c:if test="${sub==f3}">selected</c:if>>${sub.name}</option>
 			</c:forEach>
 		</select>
 
@@ -45,6 +45,8 @@
 
 		<div>${errors.get("f1")}</div>
 	</form>
+
+
 	<c:choose>
 		<c:when test="${tlssubjects.size()>0}">
 
@@ -54,8 +56,8 @@
 					<th>クラス</th>
 					<th>学生番号</th>
 					<th>氏名</th>
-					<th>1回</th>
-					<th>2回</th>
+					<th></th>
+					<th></th>
 
 				</tr>
 				<c:forEach var="testlistsubject" items="${tlssubjects}">

@@ -45,6 +45,8 @@ public class TestListAction extends Action {
 		classNum = req.getParameter("f2");
 		subject = req.getParameter("f3");
 
+//		System.out.print(entYearStr);
+
 		//DBからデータ取得 3
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
@@ -59,7 +61,7 @@ public class TestListAction extends Action {
 
 		List<Integer> entYearSet = new ArrayList<>();
 
-		for (int i = year - 10; i < year + 10; i++) {
+		for (int i = year - 10; i < year + 1; i++) {
 			entYearSet.add(i);
 		}// 現在を起点に前後10年をリストに追加
 

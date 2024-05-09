@@ -24,25 +24,35 @@ public class TestListSubjectExecuteAction extends Action {
 
 		String entYearStr = "";
 		String classNum = "";
-		String subjectName ="";
+		String subjectCd ="";
 		int entYear=0;
 
 		LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得
 		int year = todaysDate.getYear();// 現在の年を取得
 
-		List<TestListSubject> tlssubjects = null;// 学生別成績一覧リストを初期化
-		TestListSubjectDao tlsubDao = new TestListSubjectDao();//学生別成績一覧Daoを初期化
+		List<TestListSubject> tlssubjects = null;// 科目別成績一覧リストを初期化
+		TestListSubjectDao tlsubDao = new TestListSubjectDao();//科目別成績一覧Daoを初期化
 
 		Subject subject = null;// 科目リストを初期化
 		SubjectDao subDao = new SubjectDao();//科目Daoを初期化
 
 
 		//リクエストパラメータ―の取得 2
-		entYearStr = req.getParameter("f1");
-		classNum = req.getParameter("f2");
-		subjectName = req.getParameter("f3");
+		entYearStr = req.getParameter("f1");//入学年度
+		classNum = req.getParameter("f2");//クラス
+		subjectCd = req.getParameter("f3");//科目コード
 
-		subject = subDao.get(subjectName);
+
+
+		System.out.print(entYearStr);
+		System.out.print(classNum);
+		System.out.print(subjectCd);
+
+
+
+
+
+		subject = subDao.get(subjectCd);
 
 		//DBからデータ取得 3
 		if (entYearStr != null) {

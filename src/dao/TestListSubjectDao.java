@@ -31,10 +31,10 @@ public class TestListSubjectDao extends Dao{
 				// 学生インスタンスを初期化
 				TestListSubject testlistsubject = new TestListSubject();
 				// 学生インスタンスに検索結果をセット
-				testlistsubject.setEntYear(rSet.getInt("entYear"));
-				testlistsubject.setStudentNo(rSet.getString("studentNo"));
-				testlistsubject.setStudentName(rSet.getString("studentName"));
-				testlistsubject.setClassNum(rSet.getString("classNum"));
+				testlistsubject.setEntYear(rSet.getInt("ENT_YEAR"));
+				testlistsubject.setStudentNo(rSet.getString("STUDENT_NO"));
+				testlistsubject.setStudentName(rSet.getString("NAME"));
+				testlistsubject.setClassNum(rSet.getString("CLASS_NUM"));
 //				testlistsubject.setPoints(Map<>);
 				//リストに追加
 				list.add(testlistsubject);
@@ -71,20 +71,30 @@ public class TestListSubjectDao extends Dao{
 		ResultSet rSet = null;
 
 		// SQL文の条件
-		String condition = "where ent_year = ? and test.class_num = ? and subject_cd = ? and test.school_cd = ?";
+		String condition = " where ent_year = ? and test.class_num = ? and subject_cd = ? and test.school_cd = ?";
 		// SQL文のソート
-		String order = "order by no asc";
+		String order = " order by no asc";
 
 
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(baseSql+condition+order);
+			System.out.print("hello1");
 
 			// プリペアードステートメントに入学年度をバインド
 			statement.setInt(1, entYear);
+			System.out.print("hello1");
+
 			statement.setString(2, classNum);
-			statement.setString(3, subject.getCd());
+			System.out.print("hello1");
+
+			statement.setString(3, subject.getCd());//error
+			System.out.print("hello1");
+
 			statement.setString(4, school.getCd());
+
+
+			System.out.print("hello1");
 
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
