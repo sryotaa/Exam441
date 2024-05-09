@@ -70,6 +70,20 @@ public class TestListSubject {
 		this.points = points;
 	}
 
+	public String getPoint(int key) {
+//		得点マップから値を取得
+		Integer k = points.get(key);
+		if(k == null) {
+			// 得点マップに値が存在しなかった場合、"-"を返却
+			return "-";
+		} else {
+			// 得点マップに値が存在した場合、文字列で得点を返却
+			return k.toString();
+		}
+	}
 
+	public void putPoint(int key, int value) {
+		points.get(key);
+	}
 
 }

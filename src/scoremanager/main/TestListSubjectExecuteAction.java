@@ -1,6 +1,7 @@
 package scoremanager.main;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import bean.Subject;
 import bean.Teacher;
 import bean.TestListSubject;
+import dao.ClassNumDao;
 import dao.SubjectDao;
 import dao.TestListSubjectDao;
 import tool.Action;
@@ -36,6 +38,8 @@ public class TestListSubjectExecuteAction extends Action {
 		Subject subject = null;// 科目リストを初期化
 		SubjectDao subDao = new SubjectDao();//科目Daoを初期化
 
+		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
+
 
 		//リクエストパラメータ―の取得 2
 		entYearStr = req.getParameter("f1");//入学年度
@@ -55,17 +59,40 @@ public class TestListSubjectExecuteAction extends Action {
 		subject = subDao.get(subjectCd);
 
 		//DBからデータ取得 3
+
+		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+		List<String> list = cNumDao.filter(teacher.getSchool());
+//		科目一覧を取得
+		List<Subject> sublist = subDao.filter(teacher.getSchool());
+
+
 		if (entYearStr != null) {
 			// 数値に変換
 			entYear = Integer.parseInt(entYearStr);
 		}
 
 
+		List<Integer> entYearSet = new ArrayList<>();
+
+		for (int i = year - 10; i < year + 1; i++) {
+			entYearSet.add(i);
+		}// 現在を起点に前後10年をリストに追加
+
+
+
 		tlssubjects = tlsubDao.filter(entYear, classNum, subject, teacher.getSchool());
 
+		 String sub_name=subject.getName();
 
 
 		// リクエストにデータをセット
+
+		req.setAttribute("ent_year_set", entYearSet);
+		req.setAttribute("class_num_set", list);
+		req.setAttribute("subject_set", sublist);
+
+		req.setAttribute("sub_name",sub_name);
+
 		req.setAttribute("tlssubjects",tlssubjects);
 
 		//JSPへフォワード 7

@@ -47,17 +47,33 @@
 	</form>
 
 
+	<form action = "TestListStudentExecute.action" method="post">
+
+		<label>学生番号</label>
+
+				<input type="text" name="studentNo">
+
+
+		<button>検索</button>
+
+		<div>${errors.get("f1")}</div>
+	</form>
+
+
+
 	<c:choose>
 		<c:when test="${tlssubjects.size()>0}">
+					<div>科目： ${sub_name}</div>
 
-			<table class="table table-hover">
+
+			<table>
 				<tr>
 					<th>入学年度</th>
 					<th>クラス</th>
 					<th>学生番号</th>
 					<th>氏名</th>
-					<th></th>
-					<th></th>
+					<th class="text-center">1回</th>
+					<th class="text-center">2回</th>
 
 				</tr>
 				<c:forEach var="testlistsubject" items="${tlssubjects}">
@@ -66,8 +82,8 @@
 						<td>${testlistsubject.classNum}</td>
 						<td>${testlistsubject.studentNo}</td>
 						<td>${testlistsubject.studentName}</td>
-						<td></td>
-						<td></td>
+						<td>${testlistsubject.getPoint(1)}</td>
+						<td>${testlistsubject.getPoint(2)}</td>
 
 					</tr>
 				</c:forEach>

@@ -12,6 +12,49 @@
 
 	<h2>成績一覧（学生）</h2>
 
+
+
+
+
+	<form action = "TestListSubjectExecute.action" method="post">
+		<label>入学年度</label>
+		<select name="f1">
+			<option value="0">--------</option>
+			<c:forEach var="year" items="${ent_year_set}">
+				<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
+				<option value="${year}" <c:if test="${year==f1}">selected</c:if>>${year}</option>
+			</c:forEach>
+		</select>
+
+		<label>クラス</label>
+		<select name="f2">
+			<option value="0">--------</option>
+			<c:forEach var="num" items="${class_num_set}">
+				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
+				<option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
+			</c:forEach>
+		</select>
+
+		<label>科目</label>
+		<select name="f3">
+			<option value="0">--------</option>
+			<c:forEach var="sub" items="${subject_set}">
+				<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
+				<option value="${sub.cd}" <c:if test="${sub==f3}">selected</c:if>>${sub.name}</option>
+			</c:forEach>
+		</select>
+
+
+		<button>検索</button>
+
+		<div>${errors.get("f1")}</div>
+	</form>
+
+
+
+
+
+
 	<form action = "TestListStudentExecute.action" method="post">
 
 		<label>学生番号</label>
@@ -39,7 +82,7 @@
 
 	<c:choose>
 		<c:when test="${tlsstudents.size()>0}">
-			<div>${stu_name}</div>
+			<div>氏名：${stu_name}</div>
 
 			<table class="table table-hover">
 				<tr>
