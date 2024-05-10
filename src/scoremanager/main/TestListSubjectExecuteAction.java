@@ -48,14 +48,6 @@ public class TestListSubjectExecuteAction extends Action {
 
 
 
-		System.out.print(entYearStr);
-		System.out.print(classNum);
-		System.out.print(subjectCd);
-
-
-
-
-
 		subject = subDao.get(subjectCd);
 
 		//DBからデータ取得 3

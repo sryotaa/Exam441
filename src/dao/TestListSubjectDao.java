@@ -35,8 +35,10 @@ public class TestListSubjectDao extends Dao{
 			// リザルトセットを全件走査
 			while(rSet.next()) {
 
+
+
 				// 前回と同じ学生が連続した場合
-				if(student.equals(rSet.getString("no"))) {
+				if(student.equals(rSet.getString("student_no"))) {
 
 					// 学生インスタンスに検索結果をセット
 					points.put(rSet.getInt("no"), rSet.getInt("point"));
@@ -64,7 +66,7 @@ public class TestListSubjectDao extends Dao{
 					testlistsubject.setPoints(points);
 
 					// 学生情報を更新
-					student = rSet.getString("no");
+					student = rSet.getString("student_no");
 
 				}
 
@@ -113,22 +115,17 @@ public class TestListSubjectDao extends Dao{
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(baseSql+condition+order);
-			System.out.print("hello1");
 
 			// プリペアードステートメントに入学年度をバインド
 			statement.setInt(1, entYear);
-			System.out.print("hello1");
 
 			statement.setString(2, classNum);
-			System.out.print("hello1");
 
 			statement.setString(3, subject.getCd());//error
-			System.out.print("hello1");
 
 			statement.setString(4, school.getCd());
 
 
-			System.out.print("hello1");
 
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
