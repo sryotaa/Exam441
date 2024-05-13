@@ -13,7 +13,7 @@
 
 
 		<label>科目コード</label>
-		<input type="text" name="no"
+		<input type="text" name="cd"
 			placeholder="科目コードを入力してください" maxlength="10" value="${cd}" required />
 		<div>${errors.get("cd")}</div>
 
