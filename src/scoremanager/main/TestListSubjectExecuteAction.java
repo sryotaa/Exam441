@@ -48,7 +48,7 @@ public class TestListSubjectExecuteAction extends Action {
 
 
 
-		subject = subDao.get(subjectCd);
+		subject = subDao.get(subjectCd, teacher.getSchool());
 
 		//DBからデータ取得 3
 
