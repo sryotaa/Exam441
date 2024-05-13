@@ -64,11 +64,8 @@ public class TestListStudentExecuteAction extends Action{
 //			学生情報を取得
 			student = sDao.get(studentNoStr);
 			tlsstudents = tlsDao.filter(student);
-
 			stu_name=student.getName();
 		}catch(NullPointerException e){
-			System.out.print(student);//null
-
 			errors.put("nullpo", "学生番号が存在しませんでした");
 		}
 
