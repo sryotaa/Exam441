@@ -1,6 +1,5 @@
 package scoremanager.main;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,17 +24,17 @@ public class SubjectCreateExecuteAction extends Action{
 		String cd = "";//科目コード
 		String name = "";//科目名
 		Subject subject = null;
+
 		Map<String, String> errors = new HashMap<>();// エラーメッセージ
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
 		Teacher teacher = (Teacher) session.getAttribute("user");// ログインユーザーを取得
-		LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得
 
 		//リクエストパラメータ―の取得 2
 		cd = req.getParameter("cd");//科目コード
 		name = req.getParameter("name");//科目名
 
 		//DBからデータ取得 3
-		subject = sDao.get(cd);// 学生番号から学生インスタンスを取得
+		subject = sDao.get(cd,teacher.getSchool());// 学生番号から学生インスタンスを取得
 		List<String> list = cNumDao.filter(teacher.getSchool());;// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 
 
@@ -59,7 +58,6 @@ public class SubjectCreateExecuteAction extends Action{
 					}
 				}
 
-		//エラーがあったかどうかで手順6~7の内容が分岐
 		//レスポンス値をセット 6
 		//JSPへフォワード 7
 		req.setAttribute("f2",cd);

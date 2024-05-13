@@ -43,7 +43,7 @@ public class StudentCreateExecuteAction extends Action {
 
 		//DBからデータ取得 3
 		student = sDao.get(no);// 学生番号から学生インスタンスを取得
-		List<String> list = cNumDao.filter(teacher.getSchool());;// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+		List<String> list = cNumDao.filter(teacher.getSchool());// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 
 
 		//ビジネスロジック 4
@@ -62,7 +62,7 @@ public class StudentCreateExecuteAction extends Action {
 				// インスタンスに値をセット
 				student.setNo(no);
 				student.setName(name);
-				student.setEntYear(entYear);
+				student.setEntYear(year);
 				student.setClassNum(classNum);
 				student.setAttend(true);
 				student.setSchool(((Teacher)session.getAttribute("user")).getSchool());

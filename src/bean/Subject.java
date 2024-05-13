@@ -15,6 +15,9 @@ public class Subject implements Serializable{
 
 	private School school;
 
+//	private boolean isattend;
+
+
 	//ゲッタ、セッタ
 
 
@@ -42,6 +45,22 @@ public class Subject implements Serializable{
 	public void setSchool(School school) {
 		this.school = school;
 	}
+
+//	public boolean isIsattend() {
+//		return isattend;
+//	}
+//
+//	public void setIsattend(boolean isattend) {
+//		this.isattend = isattend;
+//	}
+
+
+
+
+
+
+
+
 
 
 

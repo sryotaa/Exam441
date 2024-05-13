@@ -31,7 +31,7 @@ public class SubjectUpdateExecuteAction extends Action{
 
 
 		//DBからデータ取得 3
-		Subject subject = sDao.get(cd);// 学生番号から学生インスタンスを取得
+		Subject subject = sDao.get(cd,teacher.getSchool());// 学生番号から学生インスタンスを取得
 		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 
 		//ビジネスロジック 4
