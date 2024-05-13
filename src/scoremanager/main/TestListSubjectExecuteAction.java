@@ -77,7 +77,15 @@ public class TestListSubjectExecuteAction extends Action {
 		 String sub_name=subject.getName();
 
 
+
 		// リクエストにデータをセット
+			// リクエストに入学年度をセット
+			req.setAttribute("f1", entYear);
+			// リクエストにクラス番号をセット
+			req.setAttribute("f2", classNum);
+			// リクエストに科目をセット
+			req.setAttribute("f3", subjectCd);
+
 
 		req.setAttribute("ent_year_set", entYearSet);
 		req.setAttribute("class_num_set", list);

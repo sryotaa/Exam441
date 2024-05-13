@@ -73,7 +73,9 @@ public class TestListSubject {
 	public String getPoint(int key) {
 //		得点マップから値を取得
 		Integer k = points.get(key);
+
 		if(k == null) {
+
 			// 得点マップに値が存在しなかった場合、"-"を返却
 			return "-";
 		} else {

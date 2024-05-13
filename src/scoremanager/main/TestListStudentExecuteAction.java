@@ -50,26 +50,42 @@ public class TestListStudentExecuteAction extends Action{
 
 		//リクエストパラメータ―の取得 2
 		studentNoStr = req.getParameter("studentNo");
-//		学生情報を取得
-		student = sDao.get(studentNoStr);
-
-
-
-
-		//DBからデータ取得 3
 
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
 //		科目一覧を取得
 		List<Subject> sublist = subDao.filter(teacher.getSchool());
 
+
+		 String stu_name="";
+
+
+		try{
+//			学生情報を取得
+			student = sDao.get(studentNoStr);
+			tlsstudents = tlsDao.filter(student);
+
+			stu_name=student.getName();
+		}catch(NullPointerException e){
+			System.out.print(student);//null
+
+			errors.put("nullpo", "学生番号が存在しませんでした");
+		}
+
+
+
+		//DBからデータ取得 3
+
+
 //		if (studentNoStr != null) {
 //			// 数値に変換
 //			studentNo = Integer.parseInt(studentNoStr);
 //		}
 
-		tlsstudents = tlsDao.filter(student);
-		 String stu_name=student.getName();
+
+//		 System.out.print(tlsstudents.size());
+
+
 
 			List<Integer> entYearSet = new ArrayList<>();
 
@@ -84,6 +100,9 @@ public class TestListStudentExecuteAction extends Action{
 		// リクエストにデータをセット
 		req.setAttribute("tlsstudents",tlsstudents);
 		req.setAttribute("stu_name", stu_name);
+
+		req.setAttribute("errors", errors);
+
 
 		req.setAttribute("ent_year_set", entYearSet);
 		req.setAttribute("class_num_set", list);

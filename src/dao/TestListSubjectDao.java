@@ -70,10 +70,10 @@ public class TestListSubjectDao extends Dao{
 
 				}
 
-			}
+				//リストに追加
+				list.add(testlistsubject);
 
-			//リストに追加
-			list.add(testlistsubject);
+			}
 
 		} catch (SQLException | NullPointerException e){
 			e.printStackTrace();
@@ -108,20 +108,18 @@ public class TestListSubjectDao extends Dao{
 
 		// SQL文の条件
 		String condition = " where ent_year = ? and test.class_num = ? and subject_cd = ? and test.school_cd = ?";
-		// SQL文のソート
-		String order = " order by no asc";
 
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement(baseSql+condition+order);
+			statement = connection.prepareStatement(baseSql+condition);
 
 			// プリペアードステートメントに入学年度をバインド
 			statement.setInt(1, entYear);
 
 			statement.setString(2, classNum);
 
-			statement.setString(3, subject.getCd());//error
+			statement.setString(3, subject.getCd());
 
 			statement.setString(4, school.getCd());
 
