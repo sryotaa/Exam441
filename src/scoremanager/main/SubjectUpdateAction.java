@@ -18,19 +18,19 @@ public class SubjectUpdateAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		SubjectDao sDao = new SubjectDao();//学生Dao
+		SubjectDao sDao = new SubjectDao();//科目Dao
 		HttpSession session = req.getSession();//セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");// ログインユーザーを取得
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
 		Map<String, String> errors = new HashMap<>();//エラーメッセージ
 
 		//リクエストパラメータ―の取得 2
-		String cd = req.getParameter("cd");//学番
+		String cd = req.getParameter("cd");//科目コード
 
 
 		//DBからデータ取得 3
-		Subject subject = sDao.get(cd,teacher.getSchool());//学生番号から学生インスタンスを取得
-		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+		Subject subject = sDao.get(cd,teacher.getSchool());//科目コードから科目インスタンスを取得
+		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの科目コードをもとにクラス番号の一覧を取得
 
 
 		//ビジネスロジック 4

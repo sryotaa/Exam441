@@ -21,7 +21,7 @@ public class SubjectDeleteAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		SubjectDao sDao = new SubjectDao();//学生Dao
+		SubjectDao sDao = new SubjectDao();//科目Dao
 		SchoolDao scDao = new SchoolDao();//学生Dao
 		HttpSession session = req.getSession();//セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");// ログインユーザーを取得
@@ -37,7 +37,7 @@ public class SubjectDeleteAction extends Action{
 
 		//DBからデータ取得 3
 		Subject subject = sDao.get(cd,teacher.getSchool());//科目コードからインスタンスを取得
-		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの科目コードをもとにクラス番号の一覧を取得
 
 
 		//ビジネスロジック 4

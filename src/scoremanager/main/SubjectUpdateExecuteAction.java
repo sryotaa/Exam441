@@ -19,7 +19,7 @@ public class SubjectUpdateExecuteAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		SubjectDao sDao = new SubjectDao();// 学生Dao
+		SubjectDao sDao = new SubjectDao();// SubjectDao
 		HttpSession session = req.getSession();//セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");// ログインユーザーを取得
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
@@ -31,7 +31,7 @@ public class SubjectUpdateExecuteAction extends Action{
 
 
 		//DBからデータ取得 3
-		Subject subject = sDao.get(cd,teacher.getSchool());// 学生番号から学生インスタンスを取得
+		Subject subject = sDao.get(cd,teacher.getSchool());// 科目から科目インスタンスを取得
 		List<String> list = cNumDao.filter(teacher.getSchool());//ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 
 		//ビジネスロジック 4
@@ -43,7 +43,7 @@ public class SubjectUpdateExecuteAction extends Action{
 			subject.setName(name);
 			subject.setCd(cd);
 
-			// 学生を保存
+			// 科目を保存
 			sDao.save(subject);
 		} else {
 			errors.put("cd", "科目が存在していません");

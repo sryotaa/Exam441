@@ -33,7 +33,7 @@ public class SubjectListAction extends Action{
 
 
 				//DBからデータ取得 3
-				// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
+				// ログインユーザーの科目コードの一覧を取得
 				List<String> list = cNumDao.filter(teacher.getSchool());
 
 				//リクエストパラメータ―の取得 2
@@ -44,7 +44,7 @@ public class SubjectListAction extends Action{
 
 
 
-				// リクエストに学生リストをセット
+				// リクエストに科目リストをセット
 				req.setAttribute("f1", nameStr);
 				req.setAttribute("f2", cdStr);
 
