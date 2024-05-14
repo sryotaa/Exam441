@@ -8,7 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>得点管理システム</title>
 </head>
+
+<c:import url="./common/header.jsp"/>
+
 <body>
+
+<c:import url="./common/navigation.jsp"/>
 
 	<h2>成績一覧（科目）</h2>
 
@@ -96,4 +101,7 @@
 
 
 </body>
+
+<c:import url="./common/footer.jsp"/>
+
 </html>

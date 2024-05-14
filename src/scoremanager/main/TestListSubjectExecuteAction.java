@@ -47,7 +47,7 @@ public class TestListSubjectExecuteAction extends Action {
 		subjectCd = req.getParameter("f3");//科目コード
 
 
-
+//		科目情報を取得
 		subject = subDao.get(subjectCd, teacher.getSchool());
 
 		//DBからデータ取得 3
@@ -71,9 +71,9 @@ public class TestListSubjectExecuteAction extends Action {
 		}// 現在を起点に前後10年をリストに追加
 
 
-
+//		成績情報を取得
 		tlssubjects = tlsubDao.filter(entYear, classNum, subject, teacher.getSchool());
-
+//		科目名を取得
 		 String sub_name=subject.getName();
 
 

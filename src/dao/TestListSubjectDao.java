@@ -20,7 +20,7 @@ public class TestListSubjectDao extends Dao{
 	 */
 
 	private String baseSql =
-			"SELECT ent_year,test.student_no ,student.name,test.class_num,test.no,test.point FROM TEST inner join student on test.student_no = student.no";
+			"SELECT distinct ent_year,test.student_no ,student.name,test.class_num,test.no,test.point FROM TEST inner join student on test.student_no = student.no";
 
 
 	private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
@@ -68,10 +68,12 @@ public class TestListSubjectDao extends Dao{
 					// 学生情報を更新
 					student = rSet.getString("student_no");
 
+					//リストに追加
+					list.add(testlistsubject);
+
+
 				}
 
-				//リストに追加
-				list.add(testlistsubject);
 
 			}
 

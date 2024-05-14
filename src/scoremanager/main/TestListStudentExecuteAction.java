@@ -56,16 +56,18 @@ public class TestListStudentExecuteAction extends Action{
 //		科目一覧を取得
 		List<Subject> sublist = subDao.filter(teacher.getSchool());
 
-
+//		学生氏名
 		 String stu_name="";
 
 
 		try{
 //			学生情報を取得
 			student = sDao.get(studentNoStr);
+//			成績情報を取得
 			tlsstudents = tlsDao.filter(student);
+//			学生氏名を取得
 			stu_name=student.getName();
-		}catch(NullPointerException e){
+		}catch(NullPointerException e){ //学生番号が存在しない場合
 			errors.put("nullpo", "学生番号が存在しませんでした");
 		}
 
@@ -74,13 +76,6 @@ public class TestListStudentExecuteAction extends Action{
 		//DBからデータ取得 3
 
 
-//		if (studentNoStr != null) {
-//			// 数値に変換
-//			studentNo = Integer.parseInt(studentNoStr);
-//		}
-
-
-//		 System.out.print(tlsstudents.size());
 
 
 
