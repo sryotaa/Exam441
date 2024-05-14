@@ -68,13 +68,17 @@ public class TestListSubjectDao extends Dao{
 					// 学生情報を更新
 					student = rSet.getString("student_no");
 
-					//リストに追加
-					list.add(testlistsubject);
 
 
 				}
 
 
+			}
+
+			// ループが初回じゃない場合
+			if(!(student.equals(""))) {
+				// リストに追加
+				list.add(testlistsubject);
 			}
 
 		} catch (SQLException | NullPointerException e){
