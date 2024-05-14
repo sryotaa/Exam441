@@ -94,7 +94,6 @@
 				<input type="hidden" name="f2" value="${f2}">
 				<input type="hidden" name="f3" value="${f3}">
 				<input type="hidden" name="f4" value="${f4}">
-				<input type="hidden" name="f5" value="${test.student.name}">
 				<input type="submit" value="登録をして終了">
 				</form>
 				<a href="menu.jsp">戻る</a>
