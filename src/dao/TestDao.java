@@ -260,7 +260,8 @@ public class TestDao extends Dao{
 			} else {
 				// テストが存在した場合
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("update test set point=? where student_no=? and subject_cd=? and school_cd=? and no=? ");		 	//プリペアードステートメントに値をバインド
+				statement = connection.prepareStatement("update test set point=? where student_no=? and subject_cd=? and school_cd=? and no=? ");
+				//プリペアードステートメントに値をバインド
 				if(test.getPoint() > 100 || test.getPoint() < 0){
 					statement.setString(1, null);
 				}else{

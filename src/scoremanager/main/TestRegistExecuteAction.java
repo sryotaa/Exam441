@@ -30,6 +30,7 @@ public class TestRegistExecuteAction extends Action {
 		Teacher teacher = (Teacher) session.getAttribute("user");// ログインユーザーを取得
 		List<Test> tlist = new ArrayList<>(); //テスト情報を格納するリストを初期化(得点を代入する前)
 		List<Test> lists = new ArrayList<>(); //テスト情報を格納するリストを初期化(得点を代入した後)
+//		Map<String, String> errors = new HashMap<>();// エラーメッセージ
 
 		//リクエストパラメータ―の取得 2
 		entYear = Integer.parseInt(req.getParameter("f1"));//入学年度

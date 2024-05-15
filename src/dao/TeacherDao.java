@@ -100,6 +100,7 @@ public class TeacherDao  extends Dao{
 				//教員インスタンスに検索結果をセット
 				teacher.setId(rSet.getString("id"));
 				teacher.setPassword(rSet.getString("password"));
+				teacher.setName(rSet.getString("name"));
 				//学校フィールドには学校コードで検索した学校インスタンスをセット
 				teacher.setSchool(schoolDao.get(rSet.getString("school_cd")));
 			} else {

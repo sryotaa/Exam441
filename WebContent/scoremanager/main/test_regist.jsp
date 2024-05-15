@@ -69,7 +69,7 @@
 					<th>氏名</th>
 					<th>得点</th>
 				</tr>
-				<form action = "TestRegistExecute.action" method="post">
+
 				<c:forEach var="test" items="${tests}">
 
 					<tr>
@@ -77,25 +77,28 @@
 						<td>${test.classNum}</td>
 						<td>${test.student.no}</td>
 						<td>${test.student.name}</td>
-
+				<form action = "TestRegistExecute.action" method="post">
 						<!-- test.pointが-1(nunll)の時valueを空にする -->
 						<c:if test="${test.point != -1}">
-						<td><input type="number" name="point_${test.student.no }" min="0" max="100" placeholder="" value="${test.point }"></td>
+						<td><input type="number" name="point_${test.student.no }" min="0" max="100" value="${test.point }"></td>
+						<div>${errors.get("point")}</div>
 						</c:if>
 						<c:if test="${test.point == -1}">
-						<td><input type="number" name="point_${test.student.no }" min="0" max="100" placeholder="" value=""></td>
+						<td><input type="number" name="point_${test.student.no }" min="0" max="100" value=""></td>
+						<div>${errors.get("point")}</div>
 						</c:if>
 
 					</tr>
 				</c:forEach>
 
 			</table>
+
 				<input type="hidden" name="f1" value="${f1}">
 				<input type="hidden" name="f2" value="${f2}">
 				<input type="hidden" name="f3" value="${f3}">
 				<input type="hidden" name="f4" value="${f4}">
 				<input type="submit" value="登録をして終了">
-				</form>
+			</form>
 				<a href="menu.jsp">戻る</a>
 
 		</c:when>
