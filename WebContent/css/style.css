@@ -1,19 +1,30 @@
 
 .header {
   width: 100%;
-  margin:0;
-  text-align: center;
+  text-align: left;
   background-color:#d5efff;
 }
 
+.header_title{
+	padding:0px 0px 0px 50px;
+	display: flex;
+}
+
+.user{
+	text-align: right;
+	padding:0px 50px 0px 0px;
+}
 
 .nav {
+  float: left;
   width: 30%;
   height: 100%;
   margin:3px 0px;
+  padding: 0px 0px 180px 0px;
   text-align: center;
   border-right:1px solid #eaeaea;
 }
+
 
 ul{
 	list-style:none;
@@ -24,39 +35,55 @@ ul{
   text-align: left;
   margin-left: 20px;
 
+
 }
 
 .menu_title{
 	background-color:#eaeaea;
+}
 
+.menu{
 
 }
 
 
 .block1{
-	display: flex;
+	float:left;
+	flex-grow: 1;
+	padding: 35px 75px;
+	margin:0 15px;
+	background-color:#ffaeae;
+	border-radius: 5px;
+
 }
 
 .block2{
-	display: flex;
+	float:left;
+	flex-grow: 1;
+	padding: 11px 75px;
+	margin:0 15px;
+	background-color:#b4e6b3;
+	border-radius: 5px;
 }
 
 .block3{
-	display: flex;
+	float:left;
+	padding: 35px 75px;
+	margin:0 15px;
+	background-color:#aa9fd0;
+	border-radius: 5px;
 }
 
 
 .main{
 	display: flex;
-	margin-bottom: 200px;
+
 
 }
 
 .footer {
   width: 100%;
-  height: 100%;
   position:fixed;
-  margin: auto;
   text-align: center;
   background-color:#eaeaea;
 }

@@ -13,12 +13,12 @@
 
 <div class="header">
 
-<div>
+<div class="header_title">
 	<h1>得点管理システム</h1>
 </div>
 
 <c:if test="${user.isAuthenticated()}">
-	<div>
+	<div class="user">
 		<span>${user.getName()}様</span>
 		<a href="Logout.action">ログアウト</a>
 	</div>
