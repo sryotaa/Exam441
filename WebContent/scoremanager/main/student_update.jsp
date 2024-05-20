@@ -4,11 +4,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>得点管理システム</title>
-</head>
-<body>
+<c:import url="./common/header.jsp"/>
+
+<div class="tmain">
+
+<c:import url="./common/navigation.jsp"/>
 	<h2>学生情報変更</h2>
 	<form action = "StudentUpdateExecute.action" method="post">
 		<p><label>入学年度</label><br>
@@ -43,5 +43,7 @@
 
 	<a href="StudentList.action">戻る</a>
 
-</body>
+</div>
+
+<c:import url="./common/footer.jsp"/>
 </html>
