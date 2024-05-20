@@ -19,7 +19,7 @@
   float: left;
   width: 30%;
   height: 100%;
-  margin:3px 0px;
+  margin:3px 10px 0px 0px;
   padding: 0px 0px 180px 0px;
   text-align: center;
   border-right:1px solid #eaeaea;
@@ -31,10 +31,13 @@ ul{
 }
 
 .content {
-  width: 70%;
+  width: 100%;
   text-align: left;
-  margin-left: 20px;
+  height:100%;
 
+}
+
+.container{
 
 }
 
@@ -45,7 +48,6 @@ ul{
 .menu{
 
 }
-
 
 .block1{
 	float:left;
@@ -74,16 +76,16 @@ ul{
 	border-radius: 5px;
 }
 
-
 .main{
 	display: flex;
+}
 
-
+.tmain{
+	padding:0px 0px 280px 0px;
 }
 
 .footer {
   width: 100%;
-  position:fixed;
   text-align: center;
   background-color:#eaeaea;
 }

@@ -11,7 +11,7 @@
 
 <c:import url="./common/header.jsp"/>
 
-<body>
+<div class="tmain">
 
 <c:import url="./common/navigation.jsp"/>
 
@@ -100,7 +100,7 @@
 	</c:choose>
 
 
-</body>
+</div>
 
 <c:import url="./common/footer.jsp"/>
 

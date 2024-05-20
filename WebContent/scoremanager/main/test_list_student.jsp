@@ -11,8 +11,7 @@
 
 <c:import url="./common/header.jsp"/>
 
-<body>
-
+<div class="tmain">
 <c:import url="./common/navigation.jsp"/>
 
 	<h2>成績一覧（学生）</h2>
@@ -119,8 +118,8 @@
 		</c:otherwise>
 	</c:choose>
 
-</body>
 
+</div>
 <c:import url="./common/footer.jsp"/>
 
 </html>

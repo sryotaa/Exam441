@@ -10,8 +10,7 @@
 
 <c:import url="./common/header.jsp"/>
 
-<body>
-
+<div class="tmain">
 <c:import url="./common/navigation.jsp"/>
 
 	<h2>成績参照</h2>
@@ -63,7 +62,7 @@
 	</form>
 
 
-</body>
+</div>
 
 <c:import url="./common/footer.jsp"/>
 

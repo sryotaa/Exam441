@@ -7,7 +7,7 @@
 <%-- ヘッダー --%>
 <c:import url="./common/header.jsp"/>
 
-<div class="content">
+<div class="tmain">
 <%-- ナビゲーション --%>
 <c:import url="./common/navigation.jsp"/>
 
@@ -86,7 +86,8 @@
 		</c:otherwise>
 	</c:choose>
 
+</div>
 <%-- フッター --%>
 <c:import url="./common/footer.jsp"/>
-</div>
+
 </html>

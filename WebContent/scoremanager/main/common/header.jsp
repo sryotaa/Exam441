@@ -10,7 +10,7 @@
 	<title>得点管理システム</title>
 
 </head>
-
+<div class="container">
 <div class="header">
 
 <div class="header_title">
